@@ -76,4 +76,20 @@ describe Venue do
       expect(venue.over_capacity?).to eq true
     end
   end
+
+  describe 'kick_out' do
+    it 'removes 1 patron from array until venue is at capacity' do
+      venue = Venue.new('Bluebird', 4)
+      venue.add_patron('Mike')
+      venue.add_patron('Megan')
+      venue.add_patron('Bob')
+      venue.add_patron('James')
+      venue.add_patron('Cat')
+
+      venue.kick_out
+      # require 'pry'; binding.pry 
+      expect(venue.over_capacity?).to eq false
+
+    end
+  end
 end
